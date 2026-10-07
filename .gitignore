@@ -1,0 +1,8 @@
+# 本地工具，不上传（39MB 的 gh CLI 二进制）
+tools/
+
+# macOS 系统文件
+.DS_Store
+
+# Node 依赖（如果以后有）
+node_modules/

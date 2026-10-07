@@ -1,0 +1,26 @@
+{
+  "name": "dsh-github-sync",
+  "version": "0.1.0",
+  "description": "Persistent GitHub workflow for DSH projects",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-sidebar-right",
+        "dsh-better-sidebar"
+      ]
+    }
+  },
+  "engines": { "node": ">=20" }
+}
