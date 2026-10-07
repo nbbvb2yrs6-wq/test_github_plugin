@@ -1,6 +1,6 @@
 {
   "name": "dsh-github-sync",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Persistent GitHub workflow for DSH projects",
   "type": "module",
   "main": "index.js",

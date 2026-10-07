@@ -44,7 +44,6 @@ window.__ModuleLoader__.load({
         error && h('div', { style: { ...styles.card, ...styles.warn } }, h(Icon, null, '⚠'), ' ', error),
       )
     }
-    function HeaderStatus({ ctx, sessionId }) { const [s, setS] = useState(null); useEffect(() => { let live = true; const tick = () => callFrom(ctx, sessionId, 'status').then(v => live && setS(v)).catch(() => {}); tick(); const id = setInterval(tick, 30000); return () => { live = false; clearInterval(id) } }, [sessionId]); if (!s || !s.isRepo) return null; const count = (s.entries?.length || 0) + (s.ahead || 0); return h('span', { title: count ? `GitHub：有 ${count} 项改动或未推送` : 'GitHub：已同步', style: { color: count ? 'var(--dsw-alias-state-warn-label)' : 'var(--dsw-alias-state-success-primary)', fontSize: 11, whiteSpace: 'nowrap' } }, count ? `Git ${count}` : 'Git ✓') }
     function apply(ctx) {
       const better = ctx.betterSidebar || ctx.get('betterSidebar'); if (!better) throw new Error('dsh-github-sync: betterSidebar service unavailable')
       const disposeTab = better.registerTab({ id: 'github-sync', title: 'GitHub', description: '初始化、提交、推送和同步 GitHub 项目', icon: size => h(Icon, null, '◉'), single: true, badge: (_ctx, scope) => undefined, component: props => h(Status, { ctx: props.ctx, scope: props.scope }) })
